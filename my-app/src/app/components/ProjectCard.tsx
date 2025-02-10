@@ -1,13 +1,15 @@
 import Image from 'next/image';
 
-export default function ProjectCard({ title, description, image, link }: Project) {
+export default function ProjectCard({ title, description, image, video, link }: Project) {
   return (
     <div className="project-card">
       <h3>{title}</h3>
       {image && (
         <Image src={image} alt={title} width={500} height={300} />
       )}
-      {description && <p>{description}</p>} {/* Conditionally render description */}
+        <video src={video} controls poster={image} preload='metadata' autoPlay muted className="w-full h-auto rounded-lg mb-2">
+          {description && <p>{description}</p>} {/* Conditionally render description */}
+        </video>
       {link && (
         <a href={link} target="_blank" rel="noopener noreferrer">
           View Project

@@ -1,10 +1,13 @@
+//Basically just using this for light / dark mode
 
 'use client'; // This is the Client Component
 import { useState, useEffect } from 'react';
+import { FaMoon } from 'react-icons/fa'; // Import icons
+import { HiLightBulb } from "react-icons/hi";
 
 export default function RootLayoutContent({children}: {children: React.ReactNode}) {
 
-  const [theme, setTheme] = useState('light'); // Default theme is light
+  const [theme, setTheme] = useState('dark'); // Default theme is light
 
   useEffect(() => {
     // Check local storage for saved theme on mount
@@ -30,8 +33,8 @@ export default function RootLayoutContent({children}: {children: React.ReactNode
   return (
     <>
       {children}
-      <button onClick={toggleTheme}>
-      {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+      <button onClick={toggleTheme} className="dark-mode-toggle">
+      {theme === 'light' ? <FaMoon /> : <HiLightBulb />}
       </button>
     </>
   )

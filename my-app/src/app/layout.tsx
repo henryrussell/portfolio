@@ -2,8 +2,14 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google'; //downloads the font during the build process - faster
 import './globals.css';
 import RootLayoutContent from './components/RootLayoutContent';
+import AnimatedBackground from './components/AnimatedBackground';
+import Header from './components/Header'; // Import Header
+import Footer from './components/Footer'; // Import Footer
 
-const inter = Inter({ subsets: ['latin'] }); //this tells nextjs which character subsets of the font to include
+const inter = Inter({
+  subsets: ['latin'],
+  weight: '400'
+}); //this tells nextjs which character subsets of the font to include
 
 //meta data for the website - will appear as tab name
 export const metadata: Metadata = {
@@ -16,9 +22,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       {/* apply the inter font to the whole <body> of the HTML */}
       <body className={inter.className}>
-        <RootLayoutContent>
-          {children}
-        </RootLayoutContent>
+        <AnimatedBackground />
+        <Header/>
+        <main>
+          <RootLayoutContent>
+            {children}
+          </RootLayoutContent>
+        </main>
+        <Footer/>
       </body> 
     </html>
   );
