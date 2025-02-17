@@ -71,7 +71,7 @@ export default function SkillItem({ name, level, onLevelChange }: SkillItemProps
 
 
   return (
-    <div className="skill-item">
+    <div className="skill-item" data-testid='skill-item'>
       <h4>{name}</h4>
       <div
         className="skill-level-container relative"

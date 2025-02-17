@@ -23,7 +23,7 @@ export default function AnimatedBackground() {
   };
 
   return (
-    <div className="animated-background" style={backgroundStyle}>
+    <div className="animated-background" style={backgroundStyle} data-testid='animated-background'>
       {/* You can add content here if needed */}
     </div>
   );

@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { FaMoon } from 'react-icons/fa'; // Import icons
 import { HiLightBulb } from "react-icons/hi";
 
-export default function RootLayoutContent({children}: {children: React.ReactNode}) {
+export default function DarkModeToggle({children}: {children: React.ReactNode}) {
 
   const [theme, setTheme] = useState('dark'); // Default theme is light
 
@@ -33,7 +33,7 @@ export default function RootLayoutContent({children}: {children: React.ReactNode
   return (
     <>
       {children}
-      <button onClick={toggleTheme} className="dark-mode-toggle">
+      <button onClick={toggleTheme} className="dark-mode-toggle" data-testid='dark-mode-button' aria-label='Toggle dark mode'>
       {theme === 'light' ? <FaMoon /> : <HiLightBulb />}
       </button>
     </>

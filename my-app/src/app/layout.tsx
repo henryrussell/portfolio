@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google'; //downloads the font during the build process - faster
 import './globals.css';
-import RootLayoutContent from './components/RootLayoutContent';
+import DarkModeToggle from './components/DarkModeToggle';
 import AnimatedBackground from './components/AnimatedBackground';
 import Header from './components/Header'; // Import Header
 import Footer from './components/Footer'; // Import Footer
@@ -20,14 +20,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head />
       {/* apply the inter font to the whole <body> of the HTML */}
       <body className={inter.className}>
         <AnimatedBackground />
-        <Header/>
+        <Header />
         <main>
-          <RootLayoutContent>
+          <DarkModeToggle>
             {children}
-          </RootLayoutContent>
+          </DarkModeToggle>
         </main>
         <Footer/>
       </body> 

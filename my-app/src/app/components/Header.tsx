@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header>
+    <header data-testid='header'>
       <nav>
         <ul>
           <li>

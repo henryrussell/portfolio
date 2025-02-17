@@ -3,6 +3,7 @@ import ProjectCard from './components/ProjectCard';
 import SkillItem from './components/SkillItem';
 import Intro from './components/Intro';
 import { useState } from 'react';
+import TestRunnerComponent from './components/TestRunnerComponent';
 
 export default function Home() {
   const projects: Project[] = [ // projects is an array of Projects, hence the []
@@ -38,6 +39,10 @@ export default function Home() {
         <Intro></Intro>
       </section>
 
+      <section id='test-runner'>
+        <TestRunnerComponent></TestRunnerComponent>
+      </section>
+
       <section id="projects">
           <h2>My Projects</h2>
           <div className="projects-grid">
@@ -50,7 +55,7 @@ export default function Home() {
       </section>
 
       <section id="skills">
-          <h2>Rate The Skills I Used to Make This Site!</h2>
+          <h2>Rate The Skills I Used To Make This Site!</h2>
           <div className="skills-grid">
             {skills.map((skill, index) => (
               <SkillItem 
