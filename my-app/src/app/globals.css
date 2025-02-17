@@ -51,7 +51,7 @@ footer {
 }
 
 nav ul {
-  @apply flex justify-center space-x-4; /* Center the nav items, space between */
+  @apply flex justify-center space-x-8; /* Center the nav items, space between */
 }
 
 header nav li a {
@@ -63,10 +63,19 @@ main {
 }
 
 #intro{
+  @apply p-4;
+}
+
+h1 {
+  @apply text-5xl sm:text-6xl md:text-7xl font-bold mb-4;
+  @apply mb-8;
+  animation: fadeIn 1s ease-in-out forwards; /* Apply animation */
+  @apply flex justify-center;
+  @apply p-10;
 }
 
 #test-runner {
-  @apply mt-8; /* Top margin */
+  @apply mt-10; /* Top margin */
   @apply border rounded-lg p-4; /* Border, rounded corners, padding */
   @apply bg-white dark:bg-gray-800; /* Background color (matches card styles) */
   @apply shadow-md; /* Add a subtle shadow */
@@ -106,13 +115,25 @@ main {
   @apply mt-8;
 }
 
-h1 {
-  @apply text-5xl font-bold mb-4; /* Heading styles */
-  @apply mb-8;
+h2 {
+  @apply text-3xl font-bold mb-4 text-center text-gray-800 dark:text-gray-100 opacity-0; /* Initially hidden */
+  animation: fadeIn 1s ease-in-out forwards; /* Apply animation */
 }
 
-h2 {
-  @apply text-2xl font-bold mb-4; /* Heading styles */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px); /* Optional: Start slightly above */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#projects h2{
+  @apply text-3xl font-bold mb-4 text-left text-gray-800 dark:text-gray-100 opacity-0; /* Initially hidden */
+  animation: fadeIn 1s ease-in-out forwards; /* Apply animation */ 
 }
 
 .projects-grid {
