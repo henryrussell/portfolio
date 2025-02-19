@@ -12,10 +12,10 @@ export default function TestRunnerComponent (){
                     End to End Tests
                 </button>
                 <button>
-                    End to End Tests
+                    Accessibility
                 </button>
                 <button>
-                    End to End Tests
+                    Placeholder
                 </button>
             </div>
         </div>

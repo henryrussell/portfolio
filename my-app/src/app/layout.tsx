@@ -13,7 +13,7 @@ const inter = Inter({
 
 //meta data for the website - will appear as tab name
 export const metadata: Metadata = {
-  title: 'Hire Henry - Portfolio',
+  title: 'Hire Henry - Testing and Development Portfolio',
   description: 'Welcome to my website. Developed with nextjs, react and fuck knows what else.',
 };
 
