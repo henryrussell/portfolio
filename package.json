@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "unit-tests": "jest",
-    "e2e-tests": "playwright test --config playwright-tests/playwright.config.ts --headed"
+    "e2e-tests": "playwright test --config playwright-tests/playwright.config.ts --headed",
+    "e2e-tests-headless": "playwright test --config playwright-tests/playwright.config.ts"
+
   },
   "dependencies": {
     "next": "15.1.6",
