@@ -9,7 +9,6 @@ export default function SkillItem({ name, level, onLevelChange }: SkillItemProps
   const initialLevel = typeof level === 'number' ? level : 0;
   const [currentLevel, setCurrentLevel] = useState(100);
   const sliderRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false); // This line is *essential*
   const [sliderLevel, setSliderLevel] = useState(100); // New state
   const [hasInteracted, setHasInteracted] = useState(false); // Renamed and adjusted
   const timeoutRef = useRef<NodeJS.Timeout | null>(null); // Ref is OUTSIDE the callback
@@ -20,14 +19,6 @@ export default function SkillItem({ name, level, onLevelChange }: SkillItemProps
     setSliderLevel(initialLevel); // Initialize sliderLevel here as well
     }
   }, [initialLevel, hasInteracted]);
-
-  const handleMouseDown = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    setIsDragging(true); // This line is *essential*
-    setHasInteracted(true);
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
-  }, []);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     if (sliderRef.current) {
@@ -40,34 +31,40 @@ export default function SkillItem({ name, level, onLevelChange }: SkillItemProps
       setSliderLevel(newLevel);
       onLevelChange(name, newLevel);
     }
-  }, [isDragging, onLevelChange, name]);
+  }, [onLevelChange, name]);
 
   const handleMouseUp = useCallback(() => {
-    setIsDragging(false); // This line is *essential*
     document.removeEventListener('mousemove', handleMouseMove);
     document.removeEventListener('mouseup', handleMouseUp);
     setSliderLevel(currentLevel); // Reset slider to currentLevel
     // Update currentLevel after transition (using setTimeout)
     if(timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-        timeoutRef.current = null; // Clear the ref
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null; // Clear the ref
     }
     
     timeoutRef.current = setTimeout(() => {
-        setCurrentLevel(currentLevel);
-        setSliderLevel(currentLevel);
-        timeoutRef.current = null; // Clear the ref
-      }, 300);
+      setCurrentLevel(currentLevel);
+      setSliderLevel(currentLevel);
+      timeoutRef.current = null; // Clear the ref
+    }, 300);
   
-    }, [currentLevel]); // currentLevel is a dependency for the outer useCallback
+  }, [handleMouseMove, currentLevel]); // currentLevel is a dependency for the outer useCallback
+
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    setHasInteracted(true);
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+  }, [handleMouseMove, handleMouseUp]);
   
-    useEffect(() => {
-        return () => {
-            if(timeoutRef.current) {
-                clearTimeout(timeoutRef.current)
-            }
-        }
-    }, [])
+  useEffect(() => {
+      return () => {
+          if(timeoutRef.current) {
+              clearTimeout(timeoutRef.current)
+          }
+      }
+  }, [])
 
 
   return (
@@ -93,3 +90,6 @@ export default function SkillItem({ name, level, onLevelChange }: SkillItemProps
     </div>
   );
 }
+
+
+//gemini messed with the dependency array and removed something. now they default to 0 instead of 100

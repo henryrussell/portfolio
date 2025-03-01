@@ -89,7 +89,7 @@ h1 {
 #test-runner button {
   @apply bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300;
   @apply transition-colors duration-300; /* Smooth transition */
-  @apply w-auto; /* Make buttons take full width of their grid cell */
+  @apply w-full; /* Make buttons take full width of their grid cell */
   @apply m-2;
 }
 

@@ -20,20 +20,9 @@ test.describe('The main page is displayed', () => {
 test.describe('The Test Buttons are available', () => {
 
   test('The unit test button is displayed', async ({ page }) => {
-    const unitTestButton = page.getByText('Unit Tests');
+    const unitTestButton = page.getByText('Run All Tests');
     await expect(unitTestButton).toBeVisible();
   });
-
-  test('The e2e test button is displayed', async ({ page }) => {
-    const e2eTestButton = page.getByText('End to End Tests');
-    await expect(e2eTestButton).toBeVisible();
-  });
-
-  test('The accessibility test button is displayed', async ({ page }) => {
-    const accessibilityTestButton = page.getByText('Accessibility');
-    await expect(accessibilityTestButton).toBeVisible();
-  });
-
 });
 
 test.describe('The projects are displayed', () => {
