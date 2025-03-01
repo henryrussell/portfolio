@@ -35,3 +35,21 @@ test.describe('The Test Buttons are available', () => {
   });
 
 });
+
+test.describe('The projects are displayed', () => {
+
+  test('The project container is displayed', async ({ page }) => {
+    const projectContainer = page.getByTestId('project-card');
+    await expect(projectContainer).toBeVisible();
+  });
+
+});
+
+test.describe('Testing the Skills section', () => {
+
+  test('The skills are displayed', async ({ page }) => {
+    const skillsContainer = page.getByText('React');
+    await expect(skillsContainer).toBeVisible();
+  });
+
+});
